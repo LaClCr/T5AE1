@@ -3,6 +3,7 @@ opcion=0
 
 while [ $opcion -ne "5" ]
 do
+    echo ""
     echo "-------------MENU D'OPCIONS------------------"
     echo "OPERACIÓ 1: BUSQUEDA DE NOMBRE DE CONNEXIONS PER NOM"
     echo "OPERACIÓ 2: BUSQUEDA DE CONNEXIONS PER MES"
@@ -10,6 +11,7 @@ do
     echo "OPERACIÓ 4: CONSULTA ÚLTIMA CONNEXIÓ"
     echo "OPERACIÓ 5: EIXIDA DEL PROGRAMA"
     echo "----------------------------------------------"
+    echo " "
     read -p "Selecciona una opció (1..5): " opcion
     echo " "
 
