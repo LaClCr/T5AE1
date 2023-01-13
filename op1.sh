@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 
-read -p "Introdueix un nom d'usuari:" nomUsuari
+read -p "Introdueix un nom d'usuari: " nomUsuari
 
 apa=`cat usuarios.txt | grep $nomUsuari | wc -l`
 
