@@ -1,20 +1,32 @@
-#!/bin/bash
-read -p "Introdueix un nom d'usuari: " user
-coinci=`cat usuarios.txt |grep $user| wc -l`
-numMes=0
+#!/bin/bash 
 
-if [ coinci -eq 0 ]
-then 
-    echo "No hi han registres de login per a aquest usuari."
-else    
-    echo " "
-    echo "Logins de $user:"
+read -p "Introdueix el nom del usuari per a consultar l'última connexió: " nom 
 
-    for i in `seq 1 $coinci`
-    do
-    fecha=`cat usuarios.txt|grep $user| head -n$i | tail -1| awk '{print $2 $3}'`   
+cantLogin=`cat usuarios.txt | grep $nom | wc -l` 
+max=0 
+mesmax="" 
 
-    echo "$fecha"
+for j in `seq 1 $cantLogin`  
+do  
+    mes=`cat usuarios.txt | grep $nom | head -n$j | tail -1| awk '{print $3}'` 
+    contador=0  
 
-    done
-fi
+    for i in enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre 
+    do 
+        contador=$((contador + 1)) 
+
+        if [ $i = $mes ] 
+        then 
+            if [ $max -lt $contador ] 
+            then  
+
+                    max=$contador 
+                    mesmax=$i 
+            fi 
+        fi 
+    done    
+done 
+
+dia=`cat usuarios.txt | grep $nom | grep $mesmax | awk '{print $2}'`
+
+echo "$nom es va connectar per última vegada el $dia de $mesmax." 
